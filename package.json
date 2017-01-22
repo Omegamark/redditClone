@@ -1,0 +1,16 @@
+{
+  "name": "reddit-clone-solution",
+  "version": "1.0.0",
+  "author": "Galvanize <info@galvanize.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "devDependencies": {
+    "lite-server": "^2.2.2"
+  },
+  "dependencies": {
+    "angular": "1.6.0",
+    "angular-messages": "1.6.1"
+  }
+}
