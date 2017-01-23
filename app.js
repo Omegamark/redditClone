@@ -24,35 +24,36 @@
                 vm.posts.push({
                   title: vm.post.title,
                   author: vm.post.author,
-                  image: vm.post.image,
+                  imageURL: vm.post.imageURL,
                   description: vm.post.description
                 })
                 vm.post.title = '',
                 vm.post.author = '',
-                vm.post.image = '',
+                vm.post.imageURL = '',
                 vm.post.description = ''
               }
 
         }
-        // title, author, image, and description
+        // title, author, imageURL, and description
         function setInitialPosts() {
           vm.posts.push({
-            title: 'Mark',
-            author: 'poop',
-            image: 'grant.mark@gmail.com',
-            description: '80203'
+            title: 'A Cliche',
+            author: 'Jill Stack',
+            imageURL: 'https://static.pexels.com/photos/7529/pexels-photo.jpeg',
+            description: 'This was a good idea for a picture in the 60s.'
           }, {
-            title: 'Jack',
-            author: 'thestack',
-            image: 'fullstackjack@gmail.com',
-            description: '80808'
+            title: 'Boring Concert',
+            author: 'Jack Stack',
+            imageURL: 'https://static.pexels.com/photos/69212/pexels-photo-69212.jpeg',
+            description: 'Why did I agree to do this???'
           })
           console.log(vm.posts);
-    }
+
+        }
+
       },
       templateUrl: 'form.html'
 
-
     })
-
+    
 })()

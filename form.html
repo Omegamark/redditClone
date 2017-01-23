@@ -1,11 +1,11 @@
-<h1>{{ $ctrl.users }}</h1>
+<h1>{{ $ctrl.posts[0].imageURL }}</h1>
       <!-- Just added redditClone name -->
       <form name="redditClone" ng-submit="$ctrl.createPost()">
 
 
         <label ng-class="{wrong: redditClone.title.$invalid}">Title</label>
-        <input id="title" name="title" class="form-control" placeholder="Please enter your Username"
-          ng-model="$ctrl.user.title"
+        <input id="title" type="text" name="title" class="form-control" placeholder="Please enter your postname"
+          ng-model="$ctrl.post.title"
           ng-minlength="5"
           ng-maxlength="20"
           required>
@@ -20,8 +20,8 @@
 
 
         <label>Author</label>
-        <input id="author" type="author" name="author" class="form-control" placeholder="Please enter your author"
-          ng-model="$ctrl.user.author"
+        <input id="author" type="text" name="author" class="form-control" placeholder="Please enter your author"
+          ng-model="$ctrl.post.author"
           ng-minlength="5"
           ng-maxlength="20"
           required>
@@ -33,28 +33,27 @@
           <div ng-messages-include="authorErrors.html"></div>
         </div>
 
-        <label>Image</label>
-        <input id="image" type="image" name="image" class="form-control" placeholder="Please enter your image"
-          ng-model="$ctrl.user.image"
+        <label>ImageURL</label>
+        <input id="imageURL" type="url" name="imageURL" class="form-control" placeholder="Please enter your imageURL"
+          ng-model="$ctrl.post.imageURL"
           ng-minlength="5"
           ng-maxlength="20"
           required>
 
-          <!-- ngMessages - Image -->
+          <!-- ngMessages - imageURL -->
         <div class="help-block"
-        ng-messages="redditClone.image.$error"
+        ng-messages="redditClone.imageURL.$error"
         ng-show="redditClone.imageURL.$touched">
-          <div ng-messages-include="imageErrors.html"></div>
+          <div ng-messages-include="imageURLErrors.html"></div>
 
         </div>
 
-        <label>description (5 digits)</label>
-        <input id="description" name="description" class="form-control" placeholder="Please enter your descriptioncode"
-          ng-model="$ctrl.user.description"
-          ng-pattern="/\d+/"
-          ng-minlength="5"
-          ng-maxlength="5"
-          required>
+        <label>Description</label>
+        <textarea id="description" type="textarea" name="description" class="form-control" placeholder="Please enter your description"
+          ng-model="$ctrl.post.description"
+          ng-minlength="10"
+          ng-maxlength="500"
+          required></textarea>
 
           <!-- ngMessages - Description -->
         <div class="help-block"
@@ -69,3 +68,19 @@
         <button ng-submit="$ctrl.createPost()" class="btn btn-success" type="submit">Create Post</button>
 
       </form>
+
+      
+
+      <div ng-repeat="post in $ctrl.posts">
+        <div class="media">
+          <div class="media-left">
+            <a href="#">
+              <img class="media-object" ng-src="{{post.imageURL}}" style="height: 50px; width: 50px">
+            </a>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">{{post.title}} by {{post.author}}</h4>
+            <p>{{post.description}}</p>
+          </div>
+        </div>
+      </div>
