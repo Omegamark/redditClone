@@ -1,0 +1,71 @@
+<h1>{{ $ctrl.users }}</h1>
+      <!-- Just added redditClone name -->
+      <form name="redditClone" ng-submit="$ctrl.createPost()">
+
+
+        <label ng-class="{wrong: redditClone.title.$invalid}">Title</label>
+        <input id="title" name="title" class="form-control" placeholder="Please enter your Username"
+          ng-model="$ctrl.user.title"
+          ng-minlength="5"
+          ng-maxlength="20"
+          required>
+
+          <!-- ngMessages - Title -->
+
+          <div class="help-block"
+            ng-messages="redditClone.title.$error"
+            ng-show="redditClone.title.$touched">
+            <div ng-messages-include="titleErrors.html"></div>
+          </div>
+
+
+        <label>Author</label>
+        <input id="author" type="author" name="author" class="form-control" placeholder="Please enter your author"
+          ng-model="$ctrl.user.author"
+          ng-minlength="5"
+          ng-maxlength="20"
+          required>
+
+          <!-- ngMessages - Author -->
+        <div class="help-block"
+          ng-messages="redditClone.author.$error"
+          ng-show="redditClone.author.$touched">
+          <div ng-messages-include="authorErrors.html"></div>
+        </div>
+
+        <label>Image</label>
+        <input id="image" type="image" name="image" class="form-control" placeholder="Please enter your image"
+          ng-model="$ctrl.user.image"
+          ng-minlength="5"
+          ng-maxlength="20"
+          required>
+
+          <!-- ngMessages - Image -->
+        <div class="help-block"
+        ng-messages="redditClone.image.$error"
+        ng-show="redditClone.imageURL.$touched">
+          <div ng-messages-include="imageErrors.html"></div>
+
+        </div>
+
+        <label>description (5 digits)</label>
+        <input id="description" name="description" class="form-control" placeholder="Please enter your descriptioncode"
+          ng-model="$ctrl.user.description"
+          ng-pattern="/\d+/"
+          ng-minlength="5"
+          ng-maxlength="5"
+          required>
+
+          <!-- ngMessages - Description -->
+        <div class="help-block"
+        ng-messages="redditClone.description.$error"
+        ng-show="redditClone.description.$touched">
+        <div ng-messages-include="descriptionErrors.html"></div>
+
+        </div>
+
+        <br>
+
+        <button ng-submit="$ctrl.createPost()" class="btn btn-success" type="submit">Create Post</button>
+
+      </form>
