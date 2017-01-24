@@ -1,6 +1,7 @@
-<h1>{{ $ctrl.posts[0].imageURL }}</h1>
+<!-- <h1>{{ $ctrl.posts[0].imageURL }}</h1> -->
       <!-- Just added redditClone name -->
-      <form name="redditClone" ng-submit="$ctrl.createPost()">
+      <form name="redditClone"
+      ng-submit="$ctrl.createPost()">
 
 
         <label ng-class="{wrong: redditClone.title.$invalid}">Title</label>
@@ -69,7 +70,9 @@
 
       </form>
 
-      
+      <br>
+
+      <!-- Posts & Comments - Separate these out into a separate view later: uiRouter or the like -->
 
       <div ng-repeat="post in $ctrl.posts">
         <div class="media">
@@ -81,6 +84,57 @@
           <div class="media-body">
             <h4 class="media-heading">{{post.title}} by {{post.author}}</h4>
             <p>{{post.description}}</p>
+          </div>
+          <div class="comments">
+
+            <hr>
+
+            <button type="button" class="btn" name="button"
+            ng-click="$ctrl.showCommentTextArea(post)">Post a comment</button>
+
+            <br><br>
+            <div class="container" ng-show='post.toggleCommentArea'>
+
+
+              <!-- Submitting the comment form -->
+              <!-- <form name="redditClone"
+              ng-submit="$ctrl.createPost()"> -->
+
+
+              <form class="form-group"
+              ng-submit="$ctrl.createComment()">
+
+
+                <label>Name:</label>
+                <input name="author"
+                ng-model="$ctrl.post.newComment.author"
+                ng-show='post.toggleCommentArea'>
+
+                <br>
+
+                <!-- Have the textare expand when the button is clicked: ngClick -->
+                <label>Comment:</label>
+                <textarea name="comment" rows="4" cols="80"
+                ng-model="$ctrl.post.newComment.comment"
+                ng-show='post.toggleCommentArea'></textarea>
+
+                <!-- Comment Area - Should only show when there are comments present -->
+                <div class="panel panel-default">
+                  <div class="panel-heading">Panel heading without title</div>
+                  <div class="panel-body">
+                    Panel content
+                  </div>
+                </div>
+
+                <button class="btn btn-success" type="submit"
+                ng-click="$ctrl.submitComment(post)">Submit</button>
+
+                <button class="btn btn-danger" type="button" name="button"
+                ng-click="$ctrl.cancelPost()"
+                ng-show="post.toggleCommentArea">Cancel</button>
+              <hr>
+              </form>
+            </div>
           </div>
         </div>
       </div>
