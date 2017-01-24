@@ -70,32 +70,22 @@
 
         //Show comment textarea when the "Post a comment" button is clicked
         vm.showCommentTextArea = function (post) {
-          post.toggleCommentArea = !post.toggleCommentArea
           console.log('clicked comment button');
+          post.toggleCommentArea = !post.toggleCommentArea
         }
 
         vm.submitComment = function (post) {
-          console.log(vm.post.newComment);
           console.log('submitting comment');
-
           post.comments.push(vm.post.newComment)
           console.log(post);
-          console.log(post.comments);
-
-          // comment = {
-                    console.log(vm.post.newComment.author)
-                    console.log(vm.post.newComment.comment)
-          //           }
-          // vm.posts.comments.push(comment)
-          // console.log(vm.posts.comments);
-          // console.log(comment);
-          // post.comments.push(comment)
         }
 
-        // vm.cancelPost = function () {
-        //   vm.showCommentTextArea()
-        //   console.log('clicked the cancel button');
-        // };
+
+        vm.cancelPost = function (post) {
+          post.toggleCommentPostArea = !post.toggleCommentPostArea
+          console.log('clicked the cancel button');
+
+        };
 
       },
       templateUrl: 'form.html'

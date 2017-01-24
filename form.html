@@ -66,7 +66,8 @@
 
         <br>
 
-        <button ng-submit="$ctrl.createPost()" class="btn btn-success" type="submit">Create Post</button>
+        <button class="btn btn-success" type="submit"
+         ng-submit="$ctrl.createPost()">Create Post</button>
 
       </form>
 
@@ -74,7 +75,8 @@
 
       <!-- Posts & Comments - Separate these out into a separate view later: uiRouter or the like -->
 
-      <div ng-repeat="post in $ctrl.posts">
+      <div
+      ng-repeat="post in $ctrl.posts">
         <div class="media">
           <div class="media-left">
             <a href="#">
@@ -93,7 +95,8 @@
             ng-click="$ctrl.showCommentTextArea(post)">Post a comment</button>
 
             <br><br>
-            <div class="container" ng-show='post.toggleCommentArea'>
+            <div class="container"
+            ng-show='post.toggleCommentArea'>
 
 
               <!-- Submitting the comment form -->
@@ -119,7 +122,8 @@
                 ng-show='post.toggleCommentArea'></textarea>
 
                 <!-- Comment Area - Should only show when there are comments present -->
-                <div class="panel panel-default">
+                <div class="panel panel-default"
+                ng-show="post.toggleCommentPostArea">
                   <div class="panel-heading">Panel heading without title</div>
                   <div class="panel-body">
                     Panel content
@@ -130,8 +134,7 @@
                 ng-click="$ctrl.submitComment(post)">Submit</button>
 
                 <button class="btn btn-danger" type="button" name="button"
-                ng-click="$ctrl.cancelPost()"
-                ng-show="post.toggleCommentArea">Cancel</button>
+                ng-click="$ctrl.cancelPost()">Cancel</button>
               <hr>
               </form>
             </div>
