@@ -122,21 +122,32 @@
                 ng-show='post.toggleCommentArea'></textarea>
 
                 <!-- Comment Area - Should only show when there are comments present -->
-                <div class="panel panel-default"
-                ng-show="post.toggleCommentPostArea">
-                  <div class="panel-heading">Panel heading without title</div>
-                  <div class="panel-body">
-                    Panel content
-                  </div>
-                </div>
-
+                <hr>
                 <button class="btn btn-success" type="submit"
                 ng-click="$ctrl.submitComment(post)">Submit</button>
 
                 <button class="btn btn-danger" type="button" name="button"
-                ng-click="$ctrl.cancelPost()">Cancel</button>
+                ng-click="$ctrl.cancelPost(post)">Cancel</button>
+
+                <br><br>
+
+
+
+
               <hr>
               </form>
+
+            </div>
+            <div>
+              <label><strong>Comments:</strong></label>
+              <div class="well"
+              ng-repeat="comment in post.comments">
+              <p>{{comment.comment}}</p> <strong>By: </strong><p>{{comment.author}}</p>
+
+            </div>
+
+
+
             </div>
           </div>
         </div>

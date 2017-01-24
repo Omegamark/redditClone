@@ -7,6 +7,7 @@
         const vm = this
         vm.post = {};
         vm.posts = [];
+        // vm.commentBool = true;
         // vm.comments = [];
         // vm.newComment = {};
 
@@ -76,16 +77,32 @@
 
         vm.submitComment = function (post) {
           console.log('submitting comment');
-          post.comments.push(vm.post.newComment)
+
+          vm.commentBool = !vm.commentBool
+
+          post.comments.push(vm.post.newComment);
+          vm.post.newComment = {};
+          vm.showCommentTextArea(post);
           console.log(post);
         }
 
 
         vm.cancelPost = function (post) {
-          post.toggleCommentPostArea = !post.toggleCommentPostArea
           console.log('clicked the cancel button');
+          console.log(post);
+          vm.post.newComment = {};
+          // vm.post.newComment
+          vm.showCommentTextArea(post);
 
         };
+
+        vm.showComments = function () {
+
+        }
+
+        vm.hideComments = function () {
+          vm.commentBool = !vm.commentBool
+        }
 
       },
       templateUrl: 'form.html'
