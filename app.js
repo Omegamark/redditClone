@@ -1,5 +1,7 @@
 (function() {
   'use strict'
+
+
   angular
     .module('app', ['ngMessages'])
     .component('redditClone', {
@@ -30,6 +32,7 @@
             author: vm.post.author,
             imageURL: vm.post.imageURL,
             description: vm.post.description,
+            date: new Date(),
             comment: {},
             comments: []
 
@@ -56,14 +59,14 @@
             author: 'Jill Stack',
             imageURL: 'https://static.pexels.com/photos/7529/pexels-photo.jpeg',
             description: 'This was a good idea for a picture in the 60s.',
-            date: new Date(),
+            date: moment('2000-10-10').format('LLLL'),
             comments: []
           }, {
             title: 'Boring Concert',
             author: 'Jack Stack',
             imageURL: 'https://static.pexels.com/photos/69212/pexels-photo-69212.jpeg',
             description: 'Why did I agree to do this???',
-            date: new Date(),
+            date: moment('10-19-1981').format('LLLL'),
             comments: []
           })
           console.log(vm.posts);
