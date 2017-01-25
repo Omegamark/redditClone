@@ -71,9 +71,13 @@
 
         //Show comment textarea when the "Post a comment" button is clicked
         vm.showCommentTextArea = function (post) {
+          console.log('this is post', post);
           console.log('clicked comment button');
           post.toggleCommentArea = !post.toggleCommentArea
         }
+
+        //Counts the number of comments when users submit them to each post.
+        var commentCount = 0;
 
         vm.submitComment = function (post) {
           console.log('submitting comment');
@@ -83,8 +87,12 @@
           post.comments.push(vm.post.newComment);
           vm.post.newComment = {};
           vm.showCommentTextArea(post);
-          console.log(post);
-        }
+          // console.log('comment Array', post.comments);
+          commentCount = post.comments.length;
+          console.log(commentCount);
+        };
+
+        console.log('comments', commentCount);
 
 
         vm.cancelPost = function (post) {
@@ -96,13 +104,17 @@
 
         };
 
-        vm.showComments = function () {
 
-        }
 
-        vm.hideComments = function () {
-          vm.commentBool = !vm.commentBool
-        }
+
+        //* Was trying to hide comments, but was taking far too long to do with an ngIf.
+        // vm.showComments = function () {
+        //
+        // }
+        // vm.hideComments = function () {
+        //   console.log('clicked hideComments button');
+        //   // vm.commentBool = !vm.commentBool
+        // }
 
       },
       templateUrl: 'form.html'

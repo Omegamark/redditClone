@@ -84,7 +84,7 @@
             </a>
           </div>
           <div class="media-body">
-            <h4 class="media-heading">{{post.title}} by {{post.author}}</h4>
+            <h4 class="media-heading">{{post.title}} by {{post.author}}</h4><span class="glyphicon glyphicon-comment"></span><span> | {{$ctrl.commentCount}}</span>
             <p>{{post.description}}</p>
           </div>
           <div class="comments">
@@ -141,9 +141,14 @@
             <div>
               <label><strong>Comments:</strong></label>
               <div class="well"
+              ng-model="$ctrl.commentSection"
               ng-repeat="comment in post.comments">
-              <p>{{comment.comment}}</p> <strong>By: </strong><p>{{comment.author}}</p>
+              <p>{{comment.comment}}</p><strong>By: </strong><p>{{comment.author}}</p>
 
+              <!-- How would I use an ngIf to show and hide the comments? -->
+
+              <!-- <button class="btn" type="button"
+              >Hide Comments</button> -->
             </div>
 
 
