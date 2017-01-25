@@ -4,7 +4,7 @@
       ng-submit="$ctrl.createPost()">
 
 
-        <label ng-class="{wrong: redditClone.title.$invalid}">Title</label>
+        <label ng-class="{wrong: redditClone.title.$invalid && redditClone.title.$touched}">Title</label>
         <input id="title" type="text" name="title" class="form-control" placeholder="Please enter your postname"
           ng-model="$ctrl.post.title"
           ng-minlength="5"
@@ -84,7 +84,10 @@
             </a>
           </div>
           <div class="media-body">
-            <h4 class="media-heading">{{post.title}} by {{post.author}}</h4><span class="glyphicon glyphicon-comment"></span><span>| {{post.comments.length}}</span>
+            <h4 class="media-heading">{{post.title}} by {{post.author}}</h4><span class="glyphicon glyphicon-comment"></span><span> | </span><span>{{post.comments.length}}</span><ng-pluralize count="post.comments.length" when="{'0': ' There are no comments.',
+                                                                                                                                                                                                                                                    '1': ' There is one comment.',
+                                                                                                                                                                                                                                                    'other': ' There are {{post.comments.length}} comments'}">
+                                                                                                                                                                                  </ng-pluralize>
             <p>{{post.description}}</p>
             <small>{{post.date}}</small>
           </div>
