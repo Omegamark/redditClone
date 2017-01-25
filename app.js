@@ -56,12 +56,14 @@
             author: 'Jill Stack',
             imageURL: 'https://static.pexels.com/photos/7529/pexels-photo.jpeg',
             description: 'This was a good idea for a picture in the 60s.',
+            date: new Date(),
             comments: []
           }, {
             title: 'Boring Concert',
             author: 'Jack Stack',
             imageURL: 'https://static.pexels.com/photos/69212/pexels-photo-69212.jpeg',
             description: 'Why did I agree to do this???',
+            date: new Date(),
             comments: []
           })
           console.log(vm.posts);
@@ -84,7 +86,10 @@
 
           vm.commentBool = !vm.commentBool
 
-          post.comments.push(vm.post.newComment);
+          post.comments.push({
+            author: vm.post.newComment.author,
+            comment: vm.post.newComment.comment,
+            counter: commentCount + 1});
           vm.post.newComment = {};
           vm.showCommentTextArea(post);
           // console.log('comment Array', post.comments);
@@ -95,13 +100,12 @@
         console.log('comments', commentCount);
 
 
+
         vm.cancelPost = function (post) {
           console.log('clicked the cancel button');
           console.log(post);
           vm.post.newComment = {};
-          // vm.post.newComment
           vm.showCommentTextArea(post);
-
         };
 
 
