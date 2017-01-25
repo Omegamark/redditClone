@@ -16,11 +16,11 @@
           <div class="help-block"
             ng-messages="redditClone.title.$error"
             ng-show="redditClone.title.$touched">
-            <div ng-messages-include="titleErrors.html"></div>
+            <div ng-messages-include="./ngMessages/titleErrors.html"></div>
           </div>
 
 
-        <label>Author</label>
+        <label ng-class="{wrong: redditClone.author.$invalid}">Author</label>
         <input id="author" type="text" name="author" class="form-control" placeholder="Please enter your author"
           ng-model="$ctrl.post.author"
           ng-minlength="5"
@@ -31,10 +31,10 @@
         <div class="help-block"
           ng-messages="redditClone.author.$error"
           ng-show="redditClone.author.$touched">
-          <div ng-messages-include="authorErrors.html"></div>
+          <div ng-messages-include="./ngMessages/authorErrors.html"></div>
         </div>
 
-        <label>ImageURL</label>
+        <label ng-class="{wrong: redditClone.imageURL.$invalid}">ImageURL</label>
         <input id="imageURL" type="url" name="imageURL" class="form-control" placeholder="Please enter your imageURL"
           ng-model="$ctrl.post.imageURL"
           ng-minlength="5"
@@ -45,11 +45,11 @@
         <div class="help-block"
         ng-messages="redditClone.imageURL.$error"
         ng-show="redditClone.imageURL.$touched">
-          <div ng-messages-include="imageURLErrors.html"></div>
+          <div ng-messages-include="./ngMessages/imageURLErrors.html"></div>
 
         </div>
 
-        <label>Description</label>
+        <label ng-class="{wrong: redditClone.description.$invalid}">Description</label>
         <textarea id="description" type="textarea" name="description" class="form-control" placeholder="Please enter your description"
           ng-model="$ctrl.post.description"
           ng-minlength="10"
@@ -60,7 +60,7 @@
         <div class="help-block"
         ng-messages="redditClone.description.$error"
         ng-show="redditClone.description.$touched">
-        <div ng-messages-include="descriptionErrors.html"></div>
+        <div ng-messages-include="./ngMessages/descriptionErrors.html"></div>
 
         </div>
 
